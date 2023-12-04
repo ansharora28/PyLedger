@@ -1,50 +1,76 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Invoice</title>
-  <style>
-    /* Add your custom styles here */
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Invoice</h1>
-    <address>
-      <p>Your Company Name</p>
-      <p>Your Company Address</p>
-      <p>Your Company Phone Number</p>
-    </address>
-    <div>
-      <p>Invoice Number: <span id="invoice-number">12345</span></p>
-      <p>Date: <span id="invoice-date">2022-01-01</span></p>
-    </div>
-  </header>
-  
-  <main>
-    <table>
-      <thead>
-        <tr>
-          <th>Item</th>
-          <th>Quantity</th>
-          <th>Price</th>
-          <th>Total</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Add your invoice items dynamically here -->
-      </tbody>
-    </table>
-    
-    <div>
-      <p>Subtotal: <span id="subtotal">0.00</span></p>
-      <p>Tax: <span id="tax">0.00</span></p>
-      <p>Total: <span id="total">0.00</span></p>
-    </div>
-  </main>
-  
-  <footer>
-    <p>Thank you for your business!</p>
-  </footer>
-</body>
-</html>
+<div class="invoice">
+    <h1>INVOICE</h1>
+    <h2>#001</h2>
+</div>
+<table class="invoice-info-container">
+<tbody>
+<tr>
+<td class="client-name" rowspan="2">{{client_name}}</td>
+<td>Company Name</td>
+</tr>
+<tr>
+<td>Address Line 1</td>
+</tr>
+<tr>
+<td>Invoice Date: <strong>{{today_date}}</strong></td>
+<td>Address Line 2</td>
+</tr>
+<tr>
+<td>Invoice No: <strong>12345</strong></td>
+<td>Company Email</td>
+</tr>
+</tbody>
+</table>
+<table class="line-items-container">
+<thead>
+<tr>
+<th class="heading-quantity">&nbsp;</th>
+<th class="heading-description">Description</th>
+<th class="heading-price">&nbsp;</th>
+<th class="heading-subtotal">Subtotal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&nbsp;</td>
+<td>{{item1}}</td>
+<td class="right">&nbsp;</td>
+<td class="bold">{{subtotal1}}</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>{{item2}}</td>
+<td class="right">&nbsp;</td>
+<td class="bold">{{subtotal2}}</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>{{item3}}</td>
+<td class="right">&nbsp;</td>
+<td class="bold">{{subtotal3}}</td>
+</tr>
+</tbody>
+</table>
+<table class="line-items-container has-bottom-border">
+<thead>
+<tr>
+<th>Payment Info</th>
+<th></th>
+<th>Total Due</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="payment-info">
+<div>Account Holder: <strong>Full Name</strong></div>
+<div>Bank Name: <strong>Bank of India</strong></div>
+<div>Account No: <strong>123567744</strong></div>
+<div>IFSC Code: <strong>120000547</strong></div>
+</td>
+<td class="large">{{month}}</td>
+<td class="large total">{{total}}</td>
+</tr>
+</tbody>
+</table>
+<div class="footer">
+</div>
