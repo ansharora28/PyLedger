@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Invoice</title>
+  <style>
+    /* Add your custom styles here */
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Invoice</h1>
+    <address>
+      <p>Your Company Name</p>
+      <p>Your Company Address</p>
+      <p>Your Company Phone Number</p>
+    </address>
+    <div>
+      <p>Invoice Number: <span id="invoice-number">12345</span></p>
+      <p>Date: <span id="invoice-date">2022-01-01</span></p>
+    </div>
+  </header>
+  
+  <main>
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Add your invoice items dynamically here -->
+      </tbody>
+    </table>
+    
+    <div>
+      <p>Subtotal: <span id="subtotal">0.00</span></p>
+      <p>Tax: <span id="tax">0.00</span></p>
+      <p>Total: <span id="total">0.00</span></p>
+    </div>
+  </main>
+  
+  <footer>
+    <p>Thank you for your business!</p>
+  </footer>
+</body>
+</html>
