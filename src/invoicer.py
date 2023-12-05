@@ -1,5 +1,6 @@
 import jinja2
 import pdfkit
+import os
 from datetime import datetime
 
 client_name = "Client Name"
@@ -30,4 +31,6 @@ output_text = template.render(context)
 
 config = pdfkit.configuration(wkhtmltopdf='/usr/bin/wkhtmltopdf')
 output_pdf = 'invoice.pdf'
-pdfkit.from_string(output_text, output_pdf, configuration=config, css='style.css')
+output_pdf_path = os.path.join('../invoices', 'invoice.pdf')
+
+pdfkit.from_string(output_text, output_pdf_path, configuration=config, css='style.css')
