@@ -3,24 +3,36 @@ import pdfkit
 import os
 from datetime import datetime
 
-client_name = "Client Name"
-item1 = "item 1"
-item2 = "item 2"
-item3 = "item 3"
+# Get input from the user
+client_name = input("Enter client name: ")
 
-subtotal1 = 499
-subtotal2 = 399
-subtotal3 = 129
-total = subtotal1 + subtotal2 + subtotal3
+# Get the number of items from the user
+num_items = int(input("Enter number of items: "))
+
+# Initialize empty lists to store item details
+items = []
+subtotals = []
+
+# Use a loop to collect information for each item
+for i in range(num_items):
+    item_name = input(f"Enter item {i + 1} name: ")
+    item_subtotal = float(input(f"Enter subtotal for item {i + 1}: "))
+    
+    items.append(item_name)
+    subtotals.append(item_subtotal)
+
+# Calculate the total
+total = sum(subtotals)
 
 today_date = datetime.today().strftime("%d %b, %Y")
 month = datetime.today().strftime("%B")
 
-context = {'client_name': client_name, 'today_date': today_date, 'total': f'Rs{total:.2f}',
-           'item1': item1, 'subtotal1': f'{subtotal1:.2f}',
-           'item2': item2, 'subtotal2': f'{subtotal2:.2f}',
-           'item3': item3, 'subtotal3': f'{subtotal3:.2f}'
-           }
+# Create context dictionary dynamically
+context = {'client_name': client_name, 'today_date': today_date, 'total': f'Rs{total:.2f}'}
+
+for i in range(num_items):
+    context[f'item{i + 1}'] = items[i]
+    context[f'subtotal{i + 1}'] = f'{subtotals[i]:.2f}'
 
 template_loader = jinja2.FileSystemLoader('./')
 template_env = jinja2.Environment(loader=template_loader)
@@ -30,6 +42,7 @@ template = template_env.get_template(html_template)
 output_text = template.render(context)
 
 config = pdfkit.configuration(wkhtmltopdf='/usr/bin/wkhtmltopdf')
+
 output_pdf = 'invoice.pdf'
 output_pdf_path = os.path.join('../invoices', 'invoice.pdf')
 
