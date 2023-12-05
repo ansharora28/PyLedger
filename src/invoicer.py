@@ -12,6 +12,12 @@ company_email = input("Enter your company email: ")
 
 client_name = input("Enter client name: ")
 
+# Get client account details
+account_holder_name = input("Enter client's account holder name: ")
+bank_name = input("Enter client's bank name: ")
+account_number = input("Enter client's account number: ")
+ifsc_code = input("Enter client's IFSC code: ")
+
 # Get the number of items from the user
 num_items = int(input("Enter number of items: "))
 
@@ -40,7 +46,11 @@ context = {
     'company_email': company_email,
     'client_name': client_name,
     'today_date': today_date,
-    'total': f'Rs{sum(subtotals):.2f}'
+    'total': f'Rs{sum(subtotals):.2f}',
+    'account_holder_name': account_holder_name,
+    'bank_name': bank_name,
+    'account_number': account_number,
+    'ifsc_code': ifsc_code,
 }
 
 for i in range(num_items):
@@ -61,4 +71,3 @@ output_pdf_path = os.path.join('../invoices', 'invoice.pdf')
 
 
 pdfkit.from_string(output_text, output_pdf_path, configuration=config, css='style.css')
-
