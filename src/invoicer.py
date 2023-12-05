@@ -51,6 +51,9 @@ context = {
     'bank_name': bank_name,
     'account_number': account_number,
     'ifsc_code': ifsc_code,
+    'num_items': num_items,
+    'items': items,
+    'subtotals': subtotals,
 }
 
 for i in range(num_items):
@@ -66,7 +69,10 @@ output_text = template.render(context)
 
 config = pdfkit.configuration(wkhtmltopdf='/usr/bin/wkhtmltopdf')
 
+# change the name of the output pdf file ( you can also use the invoice number variable to make different invoices)
 output_pdf = 'invoice.pdf'
+
+# change the path to the directory where you want to save the invoice
 output_pdf_path = os.path.join('../invoices', 'invoice.pdf')
 
 
