@@ -3,72 +3,62 @@
     <h2>#001</h2>
 </div>
 <table class="invoice-info-container">
-<tbody>
-<tr>
-<td class="client-name" rowspan="2">{{client_name}}</td>
-<td>Company Name</td>
-</tr>
-<tr>
-<td>Address Line 1</td>
-</tr>
-<tr>
-<td>Invoice Date: <strong>{{today_date}}</strong></td>
-<td>Address Line 2</td>
-</tr>
-<tr>
-<td>Invoice No: <strong>12345</strong></td>
-<td>Company Email</td>
-</tr>
-</tbody>
+    <tbody>
+        <tr>
+            <td class="client-name" rowspan="2">{{client_name}}</td>
+            <td>{{company_name}}</td>
+        </tr>
+        <tr>
+            <td>{{company_address_line1}}</td>
+        </tr>
+        <tr>
+            <td>Invoice Date: <strong>{{today_date}}</strong></td>
+            <td>{{company_address_line2}}</td>
+        </tr>
+        <tr>
+            <td>Invoice No: <strong>12345</strong></td>
+            <td>{{company_email}}</td>
+        </tr>
+    </tbody>
 </table>
 <table class="line-items-container">
-<thead>
-<tr>
-<th class="heading-quantity">&nbsp;</th>
-<th class="heading-description">Description</th>
-<th class="heading-price">&nbsp;</th>
-<th class="heading-subtotal">Subtotal</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>&nbsp;</td>
-<td>{{item1}}</td>
-<td class="right">&nbsp;</td>
-<td class="bold">{{subtotal1}}</td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>{{item2}}</td>
-<td class="right">&nbsp;</td>
-<td class="bold">{{subtotal2}}</td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>{{item3}}</td>
-<td class="right">&nbsp;</td>
-<td class="bold">{{subtotal3}}</td>
-</tr>
-</tbody>
+    <thead>
+        <tr>
+            <th class="heading-quantity">&nbsp;</th>
+            <th class="heading-description">Description</th>
+            <th class="heading-price">&nbsp;</th>
+            <th class="heading-subtotal">Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in range(num_items) %}
+        <tr>
+            <td>&nbsp;</td>
+            <td>{{items[i]}}</td>
+            <td class="right">&nbsp;</td>
+            <td class="bold">{{subtotals[i]}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
 </table>
 <table class="line-items-container has-bottom-border">
-<thead>
-<tr>
-<th>Payment Info</th>
-<th>Total Due</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="payment-info">
-<div>Account Holder: <strong>Full Name</strong></div>
-<div>Bank Name: <strong>Bank of India</strong></div>
-<div>Account No: <strong>123567744</strong></div>
-<div>IFSC Code: <strong>120000547</strong></div>
-</td>
-<td class="large total">{{total}}</td>
-</tr>
-</tbody>
+    <thead>
+        <tr>
+            <th>Payment Info</th>
+            <th>Total Due</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="payment-info">
+                <div>Account Holder: <strong>Full Name</strong></div>
+                <div>Bank Name: <strong>Bank of India</strong></div>
+                <div>Account No: <strong>123567744</strong></div>
+                <div>IFSC Code: <strong>120000547</strong></div>
+            </td>
+            <td class="large total">{{total}}</td>
+        </tr>
+    </tbody>
 </table>
 <div class="footer">
 </div>

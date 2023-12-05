@@ -4,6 +4,12 @@ import os
 from datetime import datetime
 
 # Get input from the user
+company_name = input("Enter your company name: ")
+company_address_line1 = input("Enter your company address (line 1): ")
+company_address_line2 = input("Enter your company address (line 2): ")
+company_phone_number = input("Enter your company phone number: ")
+company_email = input("Enter your company email: ")
+
 client_name = input("Enter client name: ")
 
 # Get the number of items from the user
@@ -21,14 +27,21 @@ for i in range(num_items):
     items.append(item_name)
     subtotals.append(item_subtotal)
 
-# Calculate the total
-total = sum(subtotals)
-
+# Get additional information
 today_date = datetime.today().strftime("%d %b, %Y")
 month = datetime.today().strftime("%B")
 
 # Create context dictionary dynamically
-context = {'client_name': client_name, 'today_date': today_date, 'total': f'Rs{total:.2f}'}
+context = {
+    'company_name': company_name,
+    'company_address_line1': company_address_line1,
+    'company_address_line2': company_address_line2,
+    'company_phone_number': company_phone_number,
+    'company_email': company_email,
+    'client_name': client_name,
+    'today_date': today_date,
+    'total': f'Rs{sum(subtotals):.2f}'
+}
 
 for i in range(num_items):
     context[f'item{i + 1}'] = items[i]
@@ -46,4 +59,6 @@ config = pdfkit.configuration(wkhtmltopdf='/usr/bin/wkhtmltopdf')
 output_pdf = 'invoice.pdf'
 output_pdf_path = os.path.join('../invoices', 'invoice.pdf')
 
+
 pdfkit.from_string(output_text, output_pdf_path, configuration=config, css='style.css')
+
